@@ -29,14 +29,14 @@ const LandingSection: React.FC<LandingSectionProps> = ({ settings, onGetStarted 
     };
 
     return (
-        <div className="min-h-screen flex flex-col justify-center items-center relative px-4 sm:px-6">
+        <div className="min-h-screen flex flex-col justify-center items-center relative px-4 sm:px-6 pt-20 sm:pt-24">
             {/* Main Content */}
             <div className="max-w-4xl mx-auto text-center">
                 {/* Hero Section */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.4 }}
                     className="mb-12"
                 >
                     <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl mx-auto mb-6 sm:mb-8">
@@ -56,21 +56,16 @@ const LandingSection: React.FC<LandingSectionProps> = ({ settings, onGetStarted 
                     {/* Beautiful Get Started Button */}
                     <motion.button
                         onClick={handleGetStarted}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`group relative px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg transition-all duration-300 ${theme === 'dark'
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`group relative px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg transition-all duration-200 ${theme === 'dark'
                             ? 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 text-white shadow-lg hover:shadow-blue-500/25'
                             : 'bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-500 hover:to-purple-600 text-white shadow-lg hover:shadow-blue-600/25'
                             } shadow-2xl hover:shadow-3xl mb-8`}
                     >
                         <span className="relative z-10 flex items-center space-x-2">
                             <span>{t.getStarted}</span>
-                            <motion.span
-                                animate={{ x: [0, 4, 0] }}
-                                transition={{ duration: 1.5, repeat: Infinity }}
-                            >
-                                🚀
-                            </motion.span>
+                            <span>🚀</span>
                         </span>
 
                         {/* Animated background glow */}
@@ -80,9 +75,9 @@ const LandingSection: React.FC<LandingSectionProps> = ({ settings, onGetStarted 
 
                 {/* Features Grid */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
                     className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-12"
                 >
                     {[
@@ -93,10 +88,10 @@ const LandingSection: React.FC<LandingSectionProps> = ({ settings, onGetStarted 
                     ].map((feature, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                            className={`p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl backdrop-blur-sm transition-all duration-300 hover:scale-105 ${theme === 'dark'
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.2, delay: 0.1 + index * 0.05 }}
+                            className={`p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl backdrop-blur-sm transition-all duration-200 hover:scale-105 ${theme === 'dark'
                                 ? 'bg-gray-800/40 border border-gray-700/50 hover:bg-gray-800/60'
                                 : 'bg-white/40 border border-gray-200/50 hover:bg-white/60'
                                 } ${feature.enabled ? 'opacity-100' : 'opacity-60'}`}
@@ -121,10 +116,10 @@ const LandingSection: React.FC<LandingSectionProps> = ({ settings, onGetStarted 
 
                 {/* Quick Start Guide */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className={`max-w-2xl mx-auto p-8 rounded-2xl backdrop-blur-sm mb-12 transition-colors duration-300 ${theme === 'dark'
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3, delay: 0.2 }}
+                    className={`max-w-2xl mx-auto p-8 rounded-2xl backdrop-blur-sm mb-12 transition-colors duration-200 ${theme === 'dark'
                         ? 'bg-gray-800/40 border border-gray-700/50'
                         : 'bg-white/40 border border-gray-200/50'
                         }`}
@@ -169,7 +164,7 @@ const LandingSection: React.FC<LandingSectionProps> = ({ settings, onGetStarted 
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1 }}
+                    transition={{ duration: 0.3, delay: 0.3 }}
                     className="flex flex-col items-center"
                 >
                     <p className={`text-sm mb-4 transition-colors duration-300 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
@@ -178,9 +173,9 @@ const LandingSection: React.FC<LandingSectionProps> = ({ settings, onGetStarted 
                     </p>
                     <motion.button
                         onClick={handleGetStarted}
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className={`p-3 rounded-full transition-colors duration-300 ${theme === 'dark'
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className={`p-3 rounded-full transition-colors duration-200 ${theme === 'dark'
                             ? 'bg-gray-800/60 hover:bg-gray-800/80 text-gray-300 hover:text-white'
                             : 'bg-white/60 hover:bg-white/80 text-gray-600 hover:text-gray-800'
                             }`}

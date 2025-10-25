@@ -8,7 +8,7 @@ class AIService {
   private models: any[] = [];
   private modelNames: string[] = [
     'gemini-2.0-flash-exp',
-    'gemini-1.5-flash-002',
+    'gemini-2.5-flash',
     'gemini-1.5-flash-001',
     'gemini-1.5-flash',
     'gemini-1.5-pro-002',
@@ -43,8 +43,8 @@ class AIService {
       throw new Error('Gemini AI service is not configured. Please set GEMINI_API_KEY.');
     }
 
-    const maxRetries = 2; // Reduced retries per model
-    const retryDelay = 1500; // Reduced delay
+    const maxRetries = 2;
+    const retryDelay = 1500;
     const prompt = this.buildPrompt(request);
 
     // Try each model in sequence
@@ -54,13 +54,10 @@ class AIService {
 
       for (let attempt = 1; attempt <= maxRetries; attempt++) {
         try {
-          console.log(`🤖 Attempting AI request with ${currentModel.name} (${attempt}/${maxRetries})...`);
-
           const result = await currentModel.instance.generateContent(prompt);
           const response = await result.response;
           const text = response.text();
 
-          console.log(`✅ AI response received successfully from ${currentModel.name}!`);
           return this.parseAIResponse(text, request.language || 'en', request.weatherData);
 
         } catch (error: any) {

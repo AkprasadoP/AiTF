@@ -74,13 +74,13 @@ export const extractLocationFromText = (text: string): string | null => {
     'new york', 'london', 'paris', 'berlin', 'rome', 'madrid', 'amsterdam',
     'sydney', 'melbourne', 'toronto', 'vancouver', 'singapore', 'hong kong',
     'seoul', 'beijing', 'shanghai', 'bangkok',
-    // Indian cities
-    'mumbai', 'delhi', 'bangalore', 'hyderabad', 'ahmedabad', 'chennai', 'kolkata',
+    // Indian cities (Jabalpur prioritized)
+    'jabalpur', 'mumbai', 'delhi', 'bangalore', 'hyderabad', 'ahmedabad', 'chennai', 'kolkata',
     'pune', 'jaipur', 'surat', 'lucknow', 'kanpur', 'nagpur', 'indore', 'thane',
     'bhopal', 'visakhapatnam', 'pimpri', 'patna', 'vadodara', 'ghaziabad', 'ludhiana',
     'agra', 'nashik', 'faridabad', 'meerut', 'rajkot', 'kalyan', 'vasai', 'varanasi',
     'srinagar', 'aurangabad', 'dhanbad', 'amritsar', 'navi mumbai', 'allahabad',
-    'ranchi', 'howrah', 'coimbatore', 'jabalpur', 'gwalior', 'vijayawada', 'jodhpur',
+    'ranchi', 'howrah', 'coimbatore', 'gwalior', 'vijayawada', 'jodhpur',
     'madurai', 'raipur', 'kota', 'guwahati', 'chandigarh', 'solapur', 'hubli',
     'dehradun', 'haridwar', 'rishikesh', 'mussoorie', 'nainital', 'shimla', 'manali',
     'dharamshala', 'mcleodganj', 'kasauli', 'dalhousie', 'kullu', 'spiti', 'leh',
@@ -103,7 +103,7 @@ export const extractLocationFromText = (text: string): string | null => {
 
       // Clean up the location by removing common non-location words
       location = location
-        .replace(/\b(today|tomorrow|now|currently|right now|this morning|tonight|weather|forecast|after|week|next|plan|planning|trip|travel|visiting|visit|about|the|a|an|and|or|but|so|tell|me|show|check|how|what|is|are|will|be|going|to)\b/gi, '')
+        .replace(/\b(today|tomorrow|now|currently|right now|this morning|tonight|weather|forecast|after|week|next|plan|planning|trip|travel|visiting|visit|about|the|a|an|and|or|but|so|tell|me|show|check|how|what|is|are|will|be|going|to|five|day|days|hour|hours|minute|minutes)\b/gi, '')
         .replace(/\s+/g, ' ') // Replace multiple spaces with single space
         .trim();
 
@@ -123,7 +123,10 @@ export const extractLocationFromText = (text: string): string | null => {
       }
 
       // Validate if it's a reasonable location name
-      if (location.length > 2 && location.length < 50) {
+      // Exclude numbers, time-related words, and forecast-related terms
+      const excludeWords = /^(five|day|days|week|weeks|hour|hours|minute|minutes|forecast|weather|current|today|tomorrow|\d+)$/i;
+
+      if (location.length > 2 && location.length < 50 && !excludeWords.test(location)) {
         console.log('✅ Pattern match found:', location);
         return capitalizeLocation(location);
       }
@@ -140,6 +143,11 @@ export const extractLocationFromText = (text: string): string | null => {
   }
 
 
+
+  // Special handling for current location queries
+  if (normalizedText.includes('current') || normalizedText.includes('here') || normalizedText.includes('my location')) {
+    return null; // Let geolocation handle this
+  }
 
   // Special handling for Japan/Japanese cities
   if (normalizedText.includes('japan') && !normalizedText.includes(' in ')) {
