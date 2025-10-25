@@ -6,10 +6,9 @@ import {
     Volume2,
     Mic,
     Globe,
-    Palette,
     Info
 } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+// Removed unused useTheme import
 
 interface SettingsPanelProps {
     isOpen: boolean;
@@ -28,7 +27,6 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     settings,
     onSettingsChange
 }) => {
-    const { theme } = useTheme();
     const [localSettings, setLocalSettings] = useState(settings);
 
     const handleSettingChange = (key: string, value: any) => {

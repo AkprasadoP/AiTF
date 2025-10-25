@@ -1,28 +1,22 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mic, MicOff, Keyboard, Volume2 } from 'lucide-react';
+import { Send, Mic, MicOff } from 'lucide-react';
 import { useSpeechRecognition } from '../hooks/useSpeechRecognition';
-import { useTheme } from '../contexts/ThemeContext';
 import { useTranslation } from '../contexts/TranslationContext';
 
 interface ChatInputProps {
     onMessage: (message: string, language: 'ja' | 'en') => void;
     disabled?: boolean;
-    placeholder?: string;
     currentLanguage?: 'ja' | 'en';
 }
 
 const ChatInput: React.FC<ChatInputProps> = ({
     onMessage,
     disabled = false,
-    placeholder = "Type your message or click the mic to speak...",
     currentLanguage = 'en'
 }) => {
-    const { theme } = useTheme();
     const { t } = useTranslation();
     const [textInput, setTextInput] = useState('');
-    const [inputMode, setInputMode] = useState<'text' | 'voice'>('text');
-    const [detectedLanguage, setDetectedLanguage] = useState<'ja' | 'en'>(currentLanguage);
     const textInputRef = useRef<HTMLInputElement>(null);
 
     // Speech recognition setup
@@ -60,7 +54,6 @@ const ChatInput: React.FC<ChatInputProps> = ({
         if (!message.trim() || disabled) return;
 
         const language = detectLanguage(message);
-        setDetectedLanguage(language);
         onMessage(message.trim(), language);
         setTextInput('');
         resetTranscript();
@@ -78,15 +71,7 @@ const ChatInput: React.FC<ChatInputProps> = ({
         }
     };
 
-    const toggleInputMode = () => {
-        if (inputMode === 'text') {
-            setInputMode('voice');
-            textInputRef.current?.blur();
-        } else {
-            setInputMode('text');
-            textInputRef.current?.focus();
-        }
-    };
+    // Removed unused toggleInputMode function
 
     const handleVoiceToggle = () => {
         if (isListening) {
@@ -110,12 +95,7 @@ const ChatInput: React.FC<ChatInputProps> = ({
                         ref={textInputRef}
                         type="text"
                         value={textInput}
-                        onChange={(e) => {
-                            setTextInput(e.target.value);
-                            if (e.target.value) {
-                                setDetectedLanguage(detectLanguage(e.target.value));
-                            }
-                        }}
+                        onChange={(e) => setTextInput(e.target.value)}
                         onKeyPress={handleKeyPress}
                         placeholder={t.typeMessage}
                         disabled={disabled}

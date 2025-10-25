@@ -27,24 +27,7 @@ const ActivitySuggestions: React.FC<ActivitySuggestionsProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const getCategoryIcon = (category: string) => {
-    const iconProps = { size: 20, className: "text-blue-600" };
-
-    switch (category) {
-      case 'travel':
-        return <MapPin {...iconProps} />;
-      case 'outdoor':
-        return <TreePine {...iconProps} />;
-      case 'indoor':
-        return <Home {...iconProps} />;
-      case 'clothing':
-        return <Shirt {...iconProps} />;
-      case 'food':
-        return <UtensilsCrossed {...iconProps} />;
-      default:
-        return <Star {...iconProps} />;
-    }
-  };
+  // Removed unused getCategoryIcon function
 
   const getCategoryColor = (category: string) => {
     switch (category) {
