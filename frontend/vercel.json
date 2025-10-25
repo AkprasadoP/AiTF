@@ -4,14 +4,7 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "devCommand": "npm run dev",
-  "env": {
-    "VITE_APP_API_URL": "@vite_app_api_url"
-  },
-  "build": {
-    "env": {
-      "VITE_APP_ENVIRONMENT": "production"
-    }
-  },
+
   "headers": [
     {
       "source": "/assets/(.*)",
