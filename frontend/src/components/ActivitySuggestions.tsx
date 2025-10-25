@@ -1,12 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  MapPin,
-  Home,
-  Shirt,
-  UtensilsCrossed,
-  TreePine,
-  Star,
   Lightbulb
 } from 'lucide-react';
 import { ActivitySuggestion } from '../types';
