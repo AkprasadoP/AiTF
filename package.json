@@ -8,7 +8,7 @@
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
-    "build": "echo 'Building frontend and backend separately via Railway services'",
+    "build": "echo 'Skipping root build - services build individually'",
     "start": "cd backend && npm start"
   },
   "keywords": [
