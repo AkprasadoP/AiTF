@@ -1,6 +1,12 @@
 [build]
 builder = "nixpacks"
 
+[build.env]
+NPM_CONFIG_PRODUCTION = "false"
+
+[nixpacks.phases.install]
+cmds = ["npm install"]
+
 [deploy]
 healthcheckPath = "/api/health"
 healthcheckTimeout = 300
