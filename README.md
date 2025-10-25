@@ -6,6 +6,28 @@
 
 ATF Weather Assistant is an intelligent weather chatbot that combines real-time weather data with AI-powered recommendations to help you make the best decisions for your day. Whether you're planning outdoor activities, choosing what to wear, or deciding on travel plans, ATF provides personalized suggestions based on current and forecasted weather conditions.
 
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 18** with TypeScript for robust component development
+- **Tailwind CSS** for modern, responsive styling
+- **Framer Motion** for smooth animations and transitions
+- **Web Speech API** for Japanese and English voice recognition
+- **Vite** for fast development and optimized builds
+
+### Backend
+- **Node.js** with Express.js for RESTful API
+- **Google Gemini API** for AI-powered suggestions
+- **OpenWeatherMap API** for real-time weather data
+- **TypeScript** for type-safe server development
+- **CORS** enabled for secure cross-origin requests
+
+### Development & Deployment
+- **TypeScript** throughout for type safety
+- **ESLint** for code quality
+- **Git** for version control
+- **Environment variables** for secure API key management
+
 ## ✨ Key Features
 
 ### 🎯 Core Functionality
