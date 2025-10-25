@@ -21,8 +21,21 @@ declare module 'util';
 
 // NPM packages
 declare module 'express' {
+    interface Request {
+        [key: string]: any;
+    }
+    interface Response {
+        [key: string]: any;
+    }
+    interface NextFunction {
+        (err?: any): void;
+    }
+    interface Application {
+        [key: string]: any;
+    }
     const express: any;
     export = express;
+    export { Request, Response, NextFunction, Application };
 }
 
 declare module 'cors' {
@@ -46,6 +59,26 @@ declare module 'dotenv' {
 }
 
 declare module 'axios' {
-    const axios: any;
+    interface AxiosResponse<T = any> {
+        data: T;
+        status: number;
+        statusText: string;
+        headers: any;
+        config: any;
+    }
+
+    interface AxiosRequestConfig {
+        [key: string]: any;
+    }
+
+    interface AxiosStatic {
+        get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
+        post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
+        put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
+        delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
+        isAxiosError(payload: any): boolean;
+    }
+
+    const axios: AxiosStatic;
     export = axios;
 }
