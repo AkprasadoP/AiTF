@@ -12,5 +12,35 @@ export default defineConfig({
         changeOrigin: true
       }
     }
+  },
+  build: {
+    // Production build optimizations
+    rollupOptions: {
+      output: {
+        // Code splitting for better caching and loading performance
+        manualChunks: {
+          // Vendor chunk for React and core libraries
+          vendor: ['react', 'react-dom'],
+          // UI libraries chunk
+          ui: ['framer-motion', 'lucide-react']
+        }
+      }
+    },
+    // Disable source maps in production for security and size
+    sourcemap: false,
+    // Use terser for better minification
+    minify: 'terser',
+    // Optimize chunk size warnings
+    chunkSizeWarningLimit: 1000,
+    // Asset handling
+    assetsDir: 'assets',
+    // Enable CSS code splitting
+    cssCodeSplit: true,
+    // Target modern browsers for better optimization
+    target: 'esnext'
+  },
+  // Optimize dependencies
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'framer-motion', 'lucide-react']
   }
 })

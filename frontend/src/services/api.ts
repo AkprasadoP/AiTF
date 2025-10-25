@@ -1,7 +1,42 @@
 import { WeatherData, AIResponse } from '../types';
 
-// Railway deployment - will be updated with actual backend URL
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// Dynamic backend URL configuration for deployment
+const API_BASE_URL = import.meta.env.VITE_APP_API_URL || 'http://localhost:3001';
+
+// API client configuration
+export const apiClient = {
+  baseURL: API_BASE_URL,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
+
+// Helper function for API requests with timeout and error handling
+async function apiRequest(url: string, options: RequestInit = {}): Promise<Response> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), apiClient.timeout);
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      headers: {
+        ...apiClient.headers,
+        ...options.headers
+      },
+      signal: controller.signal
+    });
+
+    clearTimeout(timeoutId);
+    return response;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error('Request timeout - please check your connection');
+    }
+    throw error;
+  }
+}
 
 export class ApiService {
 
@@ -9,10 +44,10 @@ export class ApiService {
    * Get weather data for a location
    */
   static async getWeather(location: string): Promise<WeatherData> {
-    const response = await fetch(`${API_BASE_URL}/weather?location=${encodeURIComponent(location)}`);
+    const response = await apiRequest(`${API_BASE_URL}/api/weather?location=${encodeURIComponent(location)}`);
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({ message: 'Network error' }));
       throw new Error(error.message || 'Failed to fetch weather data');
     }
 
@@ -24,10 +59,10 @@ export class ApiService {
    * Get weather data by coordinates
    */
   static async getWeatherByCoordinates(lat: number, lon: number): Promise<WeatherData> {
-    const response = await fetch(`${API_BASE_URL}/weather?lat=${lat}&lon=${lon}`);
+    const response = await apiRequest(`${API_BASE_URL}/api/weather?lat=${lat}&lon=${lon}`);
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({ message: 'Network error' }));
       throw new Error(error.message || 'Failed to fetch weather data');
     }
 
@@ -43,11 +78,8 @@ export class ApiService {
     weatherData?: WeatherData,
     language: 'ja' | 'en' = 'en'
   ): Promise<AIResponse> {
-    const response = await fetch(`${API_BASE_URL}/chat`, {
+    const response = await apiRequest(`${API_BASE_URL}/api/chat`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({
         message,
         weatherData,
@@ -56,7 +88,7 @@ export class ApiService {
     });
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({ message: 'Network error' }));
       throw new Error(error.message || 'Failed to get AI response');
     }
 
@@ -72,11 +104,8 @@ export class ApiService {
     message: string = 'What should I do today?',
     language: 'ja' | 'en' = 'en'
   ): Promise<{ weather: WeatherData; ai: AIResponse }> {
-    const response = await fetch(`${API_BASE_URL}/weather-chat`, {
+    const response = await apiRequest(`${API_BASE_URL}/api/weather-chat`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({
         location,
         message,
@@ -85,7 +114,7 @@ export class ApiService {
     });
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({ message: 'Network error' }));
       throw new Error(error.message || 'Failed to get weather and suggestions');
     }
 
@@ -102,11 +131,8 @@ export class ApiService {
     message: string = 'What should I do today?',
     language: 'ja' | 'en' = 'en'
   ): Promise<{ weather: WeatherData; ai: AIResponse }> {
-    const response = await fetch(`${API_BASE_URL}/weather-chat`, {
+    const response = await apiRequest(`${API_BASE_URL}/api/weather-chat`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({
         lat,
         lon,
@@ -116,7 +142,7 @@ export class ApiService {
     });
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({ message: 'Network error' }));
       throw new Error(error.message || 'Failed to get weather and suggestions');
     }
 
@@ -128,7 +154,7 @@ export class ApiService {
    * Check API health
    */
   static async checkHealth(): Promise<any> {
-    const response = await fetch(`${API_BASE_URL}/health`);
+    const response = await apiRequest(`${API_BASE_URL}/api/health`);
 
     if (!response.ok) {
       throw new Error('API health check failed');

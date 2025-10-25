@@ -290,7 +290,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ settings }) => {
                 <ChatInput
                   onMessage={handleMessage}
                   disabled={isLoading}
-                  placeholder={t.typeMessage}
                   currentLanguage={settings?.language || 'en'}
                 />
               </motion.div>
@@ -395,7 +394,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ settings }) => {
                   <ChatInput
                     onMessage={handleMessage}
                     disabled={isLoading}
-                    placeholder={t.voiceInputPlaceholder}
                     currentLanguage={settings?.language || 'en'}
                   />
                 </div>
