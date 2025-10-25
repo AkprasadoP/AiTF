@@ -41,9 +41,11 @@ if (process.env.NODE_ENV === 'production') {
 
 // CORS configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || process.env.NODE_ENV === 'production'
-    ? ['https://your-app.vercel.app', 'https://*.vercel.app']
-    : ['http://localhost:3000', 'http://127.0.0.1:3000'],
+  origin: process.env.FRONTEND_URL
+    ? [process.env.FRONTEND_URL]
+    : process.env.NODE_ENV === 'production'
+      ? ['https://*.vercel.app']
+      : ['http://localhost:3000', 'http://127.0.0.1:3000'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
