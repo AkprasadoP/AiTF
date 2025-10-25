@@ -28,8 +28,8 @@ export default defineConfig({
     },
     // Disable source maps in production for security and size
     sourcemap: false,
-    // Use terser for better minification
-    minify: 'terser',
+    // Use default esbuild minification (faster and built-in)
+    minify: 'esbuild',
     // Optimize chunk size warnings
     chunkSizeWarningLimit: 1000,
     // Asset handling
