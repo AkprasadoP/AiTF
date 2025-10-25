@@ -107,19 +107,15 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ settings }) => {
             // Log the detected location for debugging
             console.log('Detected location from coordinates:', weatherData.location.name);
 
-            // If geolocation maps to Indore but user is likely in Jabalpur area, use Jabalpur instead
-            if (weatherData.location.name === 'Indore') {
-              console.log('Geolocation detected Indore, using Jabalpur as more accurate location');
-              weatherData = await ApiService.getWeather('Jabalpur');
-            }
+
 
           } catch (geoError) {
-            console.log('Geolocation failed, using Jabalpur as default for India')
-            weatherData = await ApiService.getWeather('Jabalpur')
+            console.log('Geolocation failed, using Tokyo as default')
+            weatherData = await ApiService.getWeather('Tokyo')
           }
         } else {
-          console.log('Geolocation not supported, using Jabalpur as default')
-          weatherData = await ApiService.getWeather('Jabalpur')
+          console.log('Geolocation not supported, using Tokyo as default')
+          weatherData = await ApiService.getWeather('Tokyo')
         }
       }
 
