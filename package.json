@@ -8,7 +8,7 @@
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
-    "build": "cd backend && npm run build",
+    "build": "cd backend && npm ci && npm run build",
     "start": "cd backend && npm start"
   },
   "keywords": [
@@ -25,7 +25,8 @@
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=18.0.0",
