@@ -17,7 +17,7 @@ const weatherService = new WeatherService()
 const aiService = new AIService()
 
 const app = express()
-const PORT = process.env.PORT || 3001
+const PORT = parseInt(process.env.PORT || '3001', 10)
 
 // Production middleware
 if (process.env.NODE_ENV === 'production') {
