@@ -4,8 +4,17 @@ builder = "nixpacks"
 [build.env]
 NPM_CONFIG_PRODUCTION = "false"
 
+[nixpacks.phases.setup]
+nixPkgs = ["nodejs", "npm"]
+
 [nixpacks.phases.install]
-cmds = ["npm install"]
+cmds = [
+  "rm -f package-lock.json",
+  "npm install"
+]
+
+[nixpacks.phases.build]
+cmds = ["npm run build"]
 
 [deploy]
 healthcheckPath = "/api/health"
