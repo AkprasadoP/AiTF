@@ -32,7 +32,7 @@
   }
   
   .weather-card {
-    @apply bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded-2xl p-8 shadow-xl transition-all duration-300;
+    @apply bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded-2xl p-6 shadow-xl transition-all duration-300;
   }
 
   .dark .weather-card {

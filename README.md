@@ -2,31 +2,44 @@
 
 > Your personal AI weather companion — blending forecasts, fashion, and travel advice seamlessly.
 
+## 🚀 **LIVE DEPLOYMENT**
+
+**🌐 Frontend**: https://my-aitf.vercel.app  
+**⚡ Backend API**: https://aitf.onrender.com  
+**📊 Health Check**: https://aitf.onrender.com/api/health
+
+✅ **Status**: Fully deployed and operational  
+✅ **Features**: All features working including voice recognition, AI suggestions, and bilingual support
+
 ## 🌟 Overview
 
 ATF Weather Assistant is an intelligent weather chatbot that combines real-time weather data with AI-powered recommendations to help you make the best decisions for your day. Whether you're planning outdoor activities, choosing what to wear, or deciding on travel plans, ATF provides personalized suggestions based on current and forecasted weather conditions.
 
 ## 🛠️ Tech Stack
 
-### Frontend
+### Frontend (Deployed on Vercel)
 - **React 18** with TypeScript for robust component development
 - **Tailwind CSS** for modern, responsive styling
 - **Framer Motion** for smooth animations and transitions
 - **Web Speech API** for Japanese and English voice recognition
 - **Vite** for fast development and optimized builds
 
-### Backend
+### Backend (Deployed on Render)
 - **Node.js** with Express.js for RESTful API
 - **Google Gemini API** for AI-powered suggestions
 - **OpenWeatherMap API** for real-time weather data
 - **TypeScript** for type-safe server development
 - **CORS** enabled for secure cross-origin requests
+- **Helmet** for security middleware
+- **Compression** for response optimization
 
 ### Development & Deployment
 - **TypeScript** throughout for type safety
 - **ESLint** for code quality
-- **Git** for version control
+- **Git** for version control with GitHub
 - **Environment variables** for secure API key management
+- **Vercel** for frontend hosting and CI/CD
+- **Render** for backend hosting with auto-deploy
 
 ## ✨ Key Features
 
@@ -112,6 +125,7 @@ ATF Weather Assistant is an intelligent weather chatbot that combines real-time 
 5. **Access the application**
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:3001
+   - **Live Production**: https://my-aitf.vercel.app
 
 ## 🔑 API Keys Setup
 
@@ -171,27 +185,60 @@ atf-weather-assistant/
 - **Context-Aware Suggestions**: Get recommendations tailored to your location and weather conditions
 - **Multi-Category Advice**: From what to wear to where to go, we've got you covered
 - **Natural Interaction**: Speak or type in your preferred language
+- **Live & Ready**: Fully deployed and accessible at https://my-aitf.vercel.app
 
 ### 💡 Smart & Reliable
-- **Real-Time Data**: Always up-to-date weather information
-- **AI-Powered Insights**: Advanced algorithms provide meaningful suggestions
+- **Real-Time Data**: Always up-to-date weather information from OpenWeatherMap
+- **AI-Powered Insights**: Google Gemini AI provides meaningful suggestions
+- **Production Ready**: Deployed on Vercel (frontend) and Render (backend)
 - **Seamless Experience**: Fast, responsive, and always available
 
 ## 🚀 Deployment
 
-### Frontend (Vercel)
-```bash
-cd frontend
-npm run build
-# Deploy dist/ folder to Vercel
+### ✅ Production Deployment (LIVE)
+
+**Frontend - Vercel**
+- **URL**: https://my-aitf.vercel.app
+- **Status**: ✅ Live and operational
+- **Build**: Vite optimized production build
+- **Features**: All features working including voice recognition
+
+**Backend - Render**
+- **URL**: https://aitf.onrender.com
+- **Status**: ✅ Live and operational  
+- **Environment**: Production with security middleware
+- **APIs**: OpenWeather + Gemini AI integrated
+- **CORS**: Configured for frontend communication
+
+### 🔧 Environment Variables (Production)
+
+**Backend (Render)**
+```env
+NODE_ENV=production
+OPENWEATHER_API_KEY=your_key_here
+GEMINI_API_KEY=your_key_here
+FRONTEND_URL=https://my-aitf.vercel.app
 ```
 
-### Backend (Railway/Render)
-```bash
-cd backend
-npm run build
-# Deploy with environment variables
+**Frontend (Vercel)**
+```env
+VITE_APP_API_URL=https://aitf.onrender.com
+VITE_APP_ENVIRONMENT=production
 ```
+
+### 🧪 Testing the Live App
+
+1. **Visit**: https://my-aitf.vercel.app
+2. **Try voice input**: Click 🎤 and say "What's the weather in Tokyo?"
+3. **Test Japanese**: Say "東京の天気はどうですか？"
+4. **Check AI suggestions**: Get personalized activity recommendations
+
+### 📊 Monitoring
+
+- **Backend Health**: https://aitf.onrender.com/api/health
+- **Weather API**: https://aitf.onrender.com/api/weather?location=Tokyo
+- **Frontend Status**: Vercel dashboard
+- **Backend Logs**: Render dashboard
 
 ## 🤝 Contributing
 
