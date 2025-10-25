@@ -1,20 +1,21 @@
 import { WeatherData, AIResponse } from '../types';
 
-const API_BASE_URL = '/api';
+// Railway deployment - will be updated with actual backend URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 export class ApiService {
-  
+
   /**
    * Get weather data for a location
    */
   static async getWeather(location: string): Promise<WeatherData> {
     const response = await fetch(`${API_BASE_URL}/weather?location=${encodeURIComponent(location)}`);
-    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Failed to fetch weather data');
     }
-    
+
     const result = await response.json();
     return result.data;
   }
@@ -24,12 +25,12 @@ export class ApiService {
    */
   static async getWeatherByCoordinates(lat: number, lon: number): Promise<WeatherData> {
     const response = await fetch(`${API_BASE_URL}/weather?lat=${lat}&lon=${lon}`);
-    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Failed to fetch weather data');
     }
-    
+
     const result = await response.json();
     return result.data;
   }
@@ -38,8 +39,8 @@ export class ApiService {
    * Send chat message and get AI response
    */
   static async sendChatMessage(
-    message: string, 
-    weatherData?: WeatherData, 
+    message: string,
+    weatherData?: WeatherData,
     language: 'ja' | 'en' = 'en'
   ): Promise<AIResponse> {
     const response = await fetch(`${API_BASE_URL}/chat`, {
@@ -53,12 +54,12 @@ export class ApiService {
         language
       })
     });
-    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Failed to get AI response');
     }
-    
+
     const result = await response.json();
     return result.data;
   }
@@ -82,12 +83,12 @@ export class ApiService {
         language
       })
     });
-    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Failed to get weather and suggestions');
     }
-    
+
     const result = await response.json();
     return result.data;
   }
@@ -113,12 +114,12 @@ export class ApiService {
         language
       })
     });
-    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Failed to get weather and suggestions');
     }
-    
+
     const result = await response.json();
     return result.data;
   }
@@ -128,11 +129,11 @@ export class ApiService {
    */
   static async checkHealth(): Promise<any> {
     const response = await fetch(`${API_BASE_URL}/health`);
-    
+
     if (!response.ok) {
       throw new Error('API health check failed');
     }
-    
+
     return response.json();
   }
 }
