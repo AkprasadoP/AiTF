@@ -389,7 +389,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ settings }) => {
                     {/* AI Typing Indicator */}
                     <AnimatePresence>
                       {isLoading && (
-                        <TypingIndicator message={t.botResponses.gettingWeather} />
+                        <TypingIndicator message={messages.length === 0 ? "Starting up server... This may take a moment for the first request" : t.botResponses.gettingWeather} />
                       )}
                     </AnimatePresence>
 

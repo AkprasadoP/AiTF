@@ -6,7 +6,7 @@ const API_BASE_URL = import.meta.env.VITE_APP_API_URL || 'http://localhost:3001'
 // API client configuration
 export const apiClient = {
   baseURL: API_BASE_URL,
-  timeout: 10000,
+  timeout: 30000, // Increased to 30 seconds for cold starts
   headers: {
     'Content-Type': 'application/json'
   }
