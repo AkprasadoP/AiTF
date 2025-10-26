@@ -1,6 +1,8 @@
 # ATF Weather Assistant 🌤️
+# ATF 天気アシスタント 🌤️
 
 > Your personal AI weather companion — blending forecasts, fashion, and travel advice seamlessly.
+> あなた専用のAI天気コンパニオン — 天気予報、ファッション、旅行アドバイスをシームレスに融合
 
 ## 🚀 **LIVE DEPLOYMENT**
 
@@ -12,9 +14,11 @@
 ✅ **Features**: All features working including voice recognition, AI suggestions, and bilingual support  
 ✅ **Resilience**: Comprehensive rate limiting and quota management with graceful fallback systems
 
-## 🌟 Overview
+## 🌟 Overview | 概要
 
 ATF Weather Assistant is an intelligent weather chatbot that combines real-time weather data with AI-powered recommendations to help you make the best decisions for your day. Whether you're planning outdoor activities, choosing what to wear, or deciding on travel plans, ATF provides personalized suggestions based on current and forecasted weather conditions.
+
+ATF天気アシスタントは、リアルタイムの天気データとAIによる推奨機能を組み合わせた、あなたの一日の最適な判断をサポートするインテリジェントな天気チャットボットです。屋外活動の計画、服装の選択、旅行計画の決定など、ATFは現在および予測される天気条件に基づいてパーソナライズされた提案を提供します。
 
 ## 🛠️ Tech Stack
 
@@ -42,12 +46,12 @@ ATF Weather Assistant is an intelligent weather chatbot that combines real-time 
 - **Vercel** for frontend hosting and CI/CD
 - **Render** for backend hosting with auto-deploy
 
-## ✨ Key Features
+## ✨ Key Features | 主な機能
 
-### 🎯 Core Functionality
-- 🎤 **Voice Input Support** - Speak naturally in Japanese or English
-- 🌤️ **Real-time Weather Data** - Accurate, up-to-date weather information
-- 🤖 **AI-Powered Suggestions** - Intelligent recommendations for activities, clothing, and travel
+### 🎯 Core Functionality | コア機能
+- 🎤 **Voice Input Support | 音声入力サポート** - Speak naturally in Japanese or English | 日本語または英語で自然に話せます
+- 🌤️ **Real-time Weather Data | リアルタイム天気データ** - Accurate, up-to-date weather information | 正確で最新の天気情報
+- 🤖 **AI-Powered Suggestions | AI駆動の提案** - Intelligent recommendations for activities, clothing, and travel | アクティビティ、服装、旅行に関するインテリジェントな推奨
 
 ### 🚀 Advanced Features
 - 🌐 **Bilingual Interface** - Seamlessly switch between Japanese and English
@@ -141,21 +145,21 @@ ATF Weather Assistant is an intelligent weather chatbot that combines real-time 
 2. Create a new API key
 3. Add to `backend/.env` as `GEMINI_API_KEY`
 
-## 🎮 Usage
+## 🎮 Usage | 使用方法
 
-### Voice Input (Japanese)
-1. Click the microphone button 🎤
-2. Speak in Japanese: "東京の天気はどうですか？"
-3. Get weather data and AI-powered suggestions
+### Voice Input (Japanese) | 音声入力（日本語）
+1. Click the microphone button 🎤 | マイクボタンをクリック 🎤
+2. Speak in Japanese: "東京の天気はどうですか？" | 日本語で話す：「東京の天気はどうですか？」
+3. Get weather data and AI-powered suggestions | 天気データとAI駆動の提案を取得
 
-### Text Input (Bilingual)
-1. Type weather queries in Japanese or English
-2. Example: "What's the weather in Tokyo?"
-3. Receive contextual activity recommendations
+### Text Input (Bilingual) | テキスト入力（バイリンガル）
+1. Type weather queries in Japanese or English | 日本語または英語で天気クエリを入力
+2. Example: "What's the weather in Tokyo?" | 例：「東京の天気はどう？」
+3. Receive contextual activity recommendations | 文脈に応じたアクティビティの推奨を受け取る
 
-### Language Switching
-- Toggle between Japanese (日本語) and English
-- All UI elements and responses adapt automatically
+### Language Switching | 言語切り替え
+- Toggle between Japanese (日本語) and English | 日本語と英語を切り替え
+- All UI elements and responses adapt automatically | すべてのUI要素と応答が自動的に適応
 
 ## 🏗️ Project Structure
 
@@ -180,13 +184,13 @@ atf-weather-assistant/
 └── README.md
 ```
 
-## 🎯 Why Choose ATF Weather Assistant?
+## 🎯 Why Choose ATF Weather Assistant? | なぜATF天気アシスタントを選ぶのか？
 
-### 🌟 Intelligent & Personalized
-- **Context-Aware Suggestions**: Get recommendations tailored to your location and weather conditions
-- **Multi-Category Advice**: From what to wear to where to go, we've got you covered
-- **Natural Interaction**: Speak or type in your preferred language
-- **Live & Ready**: Fully deployed and accessible at https://my-aitf.vercel.app
+### 🌟 Intelligent & Personalized | インテリジェント＆パーソナライズ
+- **Context-Aware Suggestions | 文脈認識提案**: Get recommendations tailored to your location and weather conditions | あなたの場所と天気条件に合わせた推奨を取得
+- **Multi-Category Advice | マルチカテゴリアドバイス**: From what to wear to where to go, we've got you covered | 何を着るかからどこに行くかまで、すべてをカバー
+- **Natural Interaction | 自然な対話**: Speak or type in your preferred language | 好みの言語で話したり入力したり
+- **Live & Ready | ライブ＆準備完了**: Fully deployed and accessible at https://my-aitf.vercel.app | 完全にデプロイされ、アクセス可能
 
 ### 💡 Smart & Reliable
 - **Real-Time Data**: Always up-to-date weather information from OpenWeatherMap
@@ -268,6 +272,22 @@ This project is open source and available under the MIT License.
 - **Web Speech API** for voice recognition
 - **React & TypeScript** community for excellent tooling
 
+## 🇯🇵 日本語サポート | Japanese Support
+
+ATF天気アシスタントは日本のユーザーのために特別に設計されています：
+
+- **完全な日本語サポート** - インターフェース、音声認識、AI応答すべてが日本語対応
+- **日本の文化に配慮** - 日本の気候や文化的背景を考慮したAI提案
+- **日本の都市対応** - 東京、大阪、京都など主要都市の正確な天気データ
+- **自然な日本語対話** - 「今日の天気はどう？」「傘は必要？」など自然な会話
+
+### 日本語での使用例：
+- 「東京の天気を教えて」
+- 「今日は外出すべき？」
+- 「何を着ればいい？」
+- 「5日間の天気予報を見せて」
+
 ---
 
 **Built with ❤️ to help you make the most of every day, whatever the weather brings**
+**どんな天気でも、あなたの一日を最高にするために❤️を込めて作られました**
