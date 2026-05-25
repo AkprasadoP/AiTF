@@ -15,7 +15,7 @@ class WeatherService {
   /**
    * Get current weather data for a location
    */
-  async getCurrentWeather(location: string): Promise<WeatherData> {
+  async getCurrentWeather(location: string, unit: 'metric' | 'imperial' = 'metric'): Promise<WeatherData>{
     try {
       const response = await axios.get<WeatherApiResponse>(
         `${this.baseUrl}/weather`,

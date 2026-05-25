@@ -187,7 +187,7 @@ export const translations: Record<'en' | 'ja', Translations> = {
         // Priority
         priority: {
             high: "High Priority",
-            medium: "Medium Priority",
+            medium: "highest Priority",
             low: "Low Priority"
         },
 
